@@ -6,6 +6,11 @@ public class Flage : MonoBehaviour
 {
     public void Touch()
     {
-        GmF.GhostSystemManager.GhostSystemManager_Instance.StartRecord(Vector2.zero);
+        GmF.GhostSystemManager.GhostSystemManager_Instance.PlayRecord();
+    }
+
+    public void ToDestroy()
+    {
+        Destroy(gameObject);
     }
 }

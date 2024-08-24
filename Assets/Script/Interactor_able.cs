@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Interactor_able: MonoBehaviour 
 {
     public float range = 3f;
-    private bool state = false;
     [SerializeField] GameObject detectedObject;
 
     
@@ -14,9 +13,8 @@ public class Interactor_able: MonoBehaviour
     {
         int interactableLayer = LayerMask.NameToLayer("I_interactable");
         int layerMask = 1 << interactableLayer;
-        if (Physics2D.OverlapCircle(transform.position, range, layerMask) && !state)
+        if (Physics2D.OverlapCircle(transform.position, range, layerMask))
         {
-            state = true;
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range, layerMask);
             detectedObject = colliders[0].gameObject;
             Debug.Log(colliders.Length);

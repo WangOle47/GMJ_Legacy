@@ -48,7 +48,11 @@ namespace GmF
 
         private void Awake()
         {
-            EventSystem.OnFlagGenerated += StartRecord; 
+            EventSystem.OnFlagGenerated -= StartRecord;
+            EventSystem.OncharacterDead -= EndRecord;
+            EventSystem.OnFlagGenerated += StartRecord;
+            EventSystem.OncharacterDead += EndRecord;
+            FlagManager.FlagManager_Instance.Init();
         }
 
         public void StartRecord(Vector2 pos)
