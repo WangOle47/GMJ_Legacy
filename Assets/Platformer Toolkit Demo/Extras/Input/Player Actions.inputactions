@@ -343,7 +343,7 @@
                     "name": "",
                     "id": "991525ae-ab3b-4aa2-9b92-309f4a680319",
                     "path": "<Keyboard>/r",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "Flag",
