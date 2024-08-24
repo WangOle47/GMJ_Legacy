@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Killer_Ontrigger : MonoBehaviour
 {
-    public LayerMask playerLayer; 
+    private LayerMask playerLayer;
+    private void Start()
+    {
+        playerLayer = LayerMask.NameToLayer("Player");
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (((1 << other.gameObject.layer) & playerLayer) != 0)
+        if (other.gameObject.layer == playerLayer)
         {
             EventSystem.Damage("Trigger");
+            Debug.Log("hit");
         }
     }
 }
