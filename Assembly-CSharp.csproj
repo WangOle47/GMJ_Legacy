@@ -64,14 +64,21 @@
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\The Character\characterGround.cs" />
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\Additional\jumpTester.cs" />
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\Additional\movementLimiter.cs" />
+    <Compile Include="Assets\Script\Killer_Ontrigger.cs" />
+    <Compile Include="Assets\Script\Player_SetFlage.cs" />
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\The Character\characterMovement.cs" />
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\The Character\characterJump.cs" />
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\The Character\characterJuice.cs" />
+    <Compile Include="Assets\Script\Interactor_able.cs" />
     <Compile Include="Assets\Script\EventSystem.cs" />
+    <Compile Include="Assets\Script\Player_HP.cs" />
+    <Compile Include="Assets\Script\self_destruct.cs" />
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\Additional\PresetObject.cs" />
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\Additional\JuiceSettingsReferences.cs" />
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\Additional\CharacterMovementDataController.cs" />
     <Compile Include="Assets\Platformer Toolkit Demo\Scripts\Additional\juiceUpdater.cs" />
+    <Compile Include="Assets\Script\Flage.cs" />
+    <Compile Include="Assets\Script\Killer_Oncullion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -9,26 +9,33 @@ using UnityEngine;
 public static class EventSystem
 {
     //角色狀態
-    public static event Action<bool> Oncharacter; 
+    public static event Action OncharacterDead;
+
+    //生成旗幟
+    public static event Action<Vector2> OnFlagGenerated;
+
+    //受傷
+    public static event Action<string> OnDamage;
+
 
     public static event Action<string, AudioClip> OnAudioGenerated;//音檔生成 
-
-    //鏡頭事件
-    public static event Action<Texture2D> OnImageCaptured;
-
-    //按鈕事件
-    public static event Action OnCaptureButtonPressed;
 
     //遊戲狀態檢測
     public static event Action<string> StatusUpdated;
 
-    public static void CharacterDead(bool dead)
+
+    public static void CharacterDead()
     {
-        Oncharacter?.Invoke(dead);
+        OncharacterDead?.Invoke();
     }
-
-
-
+    public static void FlagGenerated(Vector2 vector2)
+    {
+        OnFlagGenerated?.Invoke(vector2);
+    }
+    public static void Damage(string type)
+    {
+        OnDamage?.Invoke(type);
+    }
 
 
 
@@ -37,24 +44,6 @@ public static class EventSystem
     public static void TriggerAudioGenerated(string text, AudioClip audio)
     {
         OnAudioGenerated?.Invoke(text, audio);
-    }
-
-    // 相機事件觸發器
-    public static void TriggerImageCaptured(Texture2D image)
-    {
-        OnImageCaptured?.Invoke(image);
-    }
-
-
-    // 按鈕事件觸發器
-    public static void TriggerCaptureButtonPressed() //拍照
-    {
-        OnCaptureButtonPressed?.Invoke();
-    }
-
-    public static void CapturePressed()//觸發照相功能
-    {
-        OnCaptureButtonPressed?.Invoke();
     }
 
     // 狀態更新事件
