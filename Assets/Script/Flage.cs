@@ -6,6 +6,6 @@ public class Flage : MonoBehaviour
 {
     public void Touch()
     {
-        print("touch");
+        GmF.GhostSystemManager.GhostSystemManager_Instance.StartRecord(Vector2.zero);
     }
 }
