@@ -12,7 +12,7 @@
 
         public override AudioClipSet GetClipSet() => set;
 
-        void OnCharacterDead() {
+        void OnCharacterDead(UnityEngine.Vector2 pos) {
             Play();
         }
     }

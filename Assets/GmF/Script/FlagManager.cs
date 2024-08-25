@@ -30,6 +30,8 @@ namespace GmF
 #endif
 
         GameObject FlagePrefab = null;
+        GameObject EndFlagePrefab = null;
+        GameObject EndFlagGO = null;
         Flage _Flage = null;
 
         private void Awake()
@@ -41,6 +43,7 @@ namespace GmF
         {
             EventSystem.OnFlagGenerated -= CreateFlage;
             EventSystem.OnFlagGenerated += CreateFlage;
+            EventSystem.OncharacterDead += CreateEndFlage;
         }
 
         public void CreateFlage(Vector2 pos)
@@ -61,6 +64,25 @@ namespace GmF
             newFlag.name = "Flage";
             _Flage = newFlag.AddComponent<Flage>();
             _Flage.transform.position = pos;
+        }
+
+        public void CreateEndFlage(Vector2 pos)
+        {
+            Debug.Log("<color=white>CreateEndFlage</color>");
+            if (EndFlagePrefab == null)
+            {
+                EndFlagePrefab = Resources.Load<GameObject>("Prefab/EndFlage");
+            }
+
+            if (EndFlagGO != null)
+            {
+                Destroy(EndFlagGO);
+                EndFlagGO = null;
+            }
+
+            EndFlagGO = Instantiate(EndFlagePrefab) as GameObject;
+            EndFlagGO.name = "EndFlage";
+            EndFlagGO.transform.position = pos;
         }
     }
 }

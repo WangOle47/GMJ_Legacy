@@ -48,7 +48,7 @@ namespace Chika {
             base.PlayParticle();
         }
 
-        void OnCharacterDead() {
+        void OnCharacterDead(Vector2 pos) {
             Play();
         }
     }
