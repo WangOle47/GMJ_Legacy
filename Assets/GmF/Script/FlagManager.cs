@@ -60,10 +60,21 @@ namespace GmF
                 _Flage = null;
             }
 
+            DestroyEndFlag();
+
             GameObject newFlag = Instantiate(FlagePrefab) as GameObject;
             newFlag.name = "Flage";
             _Flage = newFlag.AddComponent<Flage>();
             _Flage.transform.position = pos;
+        }
+
+        public void DestroyEndFlag()
+        {
+            if (EndFlagGO != null)
+            {
+                Destroy(EndFlagGO);
+                EndFlagGO = null;
+            }
         }
 
         public void CreateEndFlage(Vector2 pos)
@@ -74,11 +85,7 @@ namespace GmF
                 EndFlagePrefab = Resources.Load<GameObject>("Prefab/EndFlage");
             }
 
-            if (EndFlagGO != null)
-            {
-                Destroy(EndFlagGO);
-                EndFlagGO = null;
-            }
+            DestroyEndFlag();
 
             EndFlagGO = Instantiate(EndFlagePrefab) as GameObject;
             EndFlagGO.name = "EndFlage";
