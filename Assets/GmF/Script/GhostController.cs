@@ -110,6 +110,8 @@ public class GhostController : MonoBehaviour
             isMoveing = false;
         }
 
+        transform.localScale = new Vector3(lastPos.x > transform.position.x ? -1 : 1, 1, 1);
+
         lastPos = transform.position;
     }
 }
