@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mark
   - Lab
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: UI - Top
     uniqueID: 562644223
+    locked: 0
+  - name: Particle - Forground
+    uniqueID: 1296027725
     locked: 0
