@@ -66,6 +66,8 @@ namespace GmF
                 _GhostController = null;
             }
 
+            oldRecordX.ClearKeys();
+            oldRecordY.ClearKeys();
             newRecordX.ClearKeys();
             newRecordY.ClearKeys();
             onRecord = true;
