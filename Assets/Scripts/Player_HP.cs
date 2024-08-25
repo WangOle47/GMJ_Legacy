@@ -8,6 +8,7 @@ public class Player_HP : MonoBehaviour
 {
     public GameObject Inputmanager;
     public Rigidbody2D Player_Rig;
+    public Animator Animator;
     public float HP = 100;
     private Vector2 revival_point;
     private Vector2 Dead_point;
@@ -44,6 +45,7 @@ public class Player_HP : MonoBehaviour
         Inputmanager.SetActive(false);
         HP = 0;
         Dead_point = transform.position;
+        Animator.SetTrigger("Die");
         EventSystem.CharacterDead(Dead_point);
         if(type == "Collision")//·|¯d¿òª«
         {
@@ -67,6 +69,7 @@ public class Player_HP : MonoBehaviour
         Player_Rig.simulated = true;
         HP = 100;
         transform.position = revival_point;
+        Animator.SetTrigger("Spawn");
         Inputmanager.SetActive(true);
     }
 
