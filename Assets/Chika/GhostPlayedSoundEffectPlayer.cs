@@ -9,13 +9,13 @@
         }
 
         void Update() {
-            if (!ghostController) {
-                played = false;
-                ghostController = FindAnyObjectByType<GhostController>();
-            }
+            //if (!ghostController) {
+            //    played = false;
+            //    ghostController = FindAnyObjectByType<GhostController>();
+            //}
 
-            if (!ghostController) return;
-            if (!played) Play();
+            //if (!ghostController) return;
+            //if (!played) Play();
         }
 
         public override AudioClipSet GetClipSet() => set;

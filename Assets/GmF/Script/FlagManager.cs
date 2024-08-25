@@ -21,6 +21,14 @@ namespace GmF
             }
         }
 
+#if UNITY_EDITOR
+        [UnityEditor.InitializeOnEnterPlayMode]
+        static void InitializeInEditor()
+        {
+            Instance = null;
+        }
+#endif
+
         GameObject FlagePrefab = null;
         Flage _Flage = null;
 
