@@ -5,6 +5,7 @@ using UnityEngine;
 public class FinshLine : MonoBehaviour
 {
     private LayerMask playerLayer;
+    public GameObject FinishPanel;
     private void Start()
     {
         playerLayer = LayerMask.NameToLayer("Player");
@@ -13,7 +14,14 @@ public class FinshLine : MonoBehaviour
     {
         if (other.gameObject.layer == playerLayer)
         {
-            
+            FinishPanel.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == playerLayer)
+        {
+            FinishPanel.SetActive(false);
         }
     }
 }
