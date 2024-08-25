@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Killer_Oncullion : MonoBehaviour
 {
-    public LayerMask playerLayer;
-    private void OnCollisionEnter(Collision collision)
+    private LayerMask playerLayer;
+    private void Start()
     {
-        if (((1 << collision.gameObject.layer) & playerLayer) != 0)
+        playerLayer = LayerMask.NameToLayer("Player");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == playerLayer)
         {
             EventSystem.Damage("Collision");
         }

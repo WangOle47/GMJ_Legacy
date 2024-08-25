@@ -10,6 +10,7 @@ public class Player_HP : MonoBehaviour
     public float HP = 100;
     private Vector2 revival_point;
     private Vector2 Dead_point;
+    private Vector2 First_point;
 
     private void OnEnable()
     {
@@ -21,7 +22,11 @@ public class Player_HP : MonoBehaviour
         EventSystem.OnDamage -= dead;
         EventSystem.OnFlagGenerated -= revival_point_set;
     }
-
+    private void Start()
+    {
+        First_point = transform.position;
+        revival_point = First_point;
+    }
     private void revival_point_set(Vector2 vector)
     {
         revival_point = transform.position;
@@ -29,6 +34,11 @@ public class Player_HP : MonoBehaviour
 
     public void dead(string type)
     {
+        if (type == "ReStart")//重新開始
+        {
+            transform.position = First_point;
+            return;
+        }
         Inputmanager.SetActive(false);
         HP = 0;
         Dead_point = transform.position;
@@ -43,6 +53,7 @@ public class Player_HP : MonoBehaviour
         }
         else if (type == "Self_destruct")//自爆
         {
+
 
         }
         StartCoroutine(revival());
