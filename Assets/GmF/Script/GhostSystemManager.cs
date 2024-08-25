@@ -41,6 +41,9 @@ namespace GmF
 
         public float RePlayTimeScal = 1;
 
+        float DelayPlayRecordLastTime = 0;
+        bool WattingPlayRecord = false;
+
         CharacterOnFlagNotReadySoundEffectPlayer _CharacterOnFlagNotReadySoundEffectPlayer = null;
 
         public bool DebugTool_StartRecord = false;
@@ -90,7 +93,7 @@ namespace GmF
             }
         }
 
-        public void PlayRecord()
+        public void PlayRecord(float setDelayPlayTime)
         {
             Debug.Log("<color=white>PlayRecord</color>");
             if(oldRecordX.length == 0 || oldRecordY.length == 0)
@@ -116,11 +119,17 @@ namespace GmF
                 _GhostController = null;
             }
 
+            DelayPlayRecordLastTime = setDelayPlayTime;
+            WattingPlayRecord = true;
+        }
+
+        void BeforDelayPlayRecord()
+        {
             if (_GhostPrefab == null)
             {
                 _GhostPrefab = Resources.Load<GameObject>("Prefab/GhostCharacter");
             }
-            
+
             GameObject newGhost = Instantiate(_GhostPrefab) as GameObject;
             _GhostController = newGhost.AddComponent<GhostController>();
 
@@ -144,7 +153,7 @@ namespace GmF
             if (DebugTool_RePlayRecord)
             {
                 DebugTool_RePlayRecord = false;
-                PlayRecord();
+                PlayRecord(0);
             }
 
             if (onRecord)
@@ -153,6 +162,15 @@ namespace GmF
                 newRecordX.AddKey(Time.time - StartRecordTime, pos.x);
                 newRecordY.AddKey(Time.time - StartRecordTime, pos.y);
             }
+
+            DelayPlayRecordLastTime = Mathf.Max(0, DelayPlayRecordLastTime - Time.deltaTime);
+            if (WattingPlayRecord && DelayPlayRecordLastTime <= 0)
+            {
+                WattingPlayRecord = false;
+                BeforDelayPlayRecord();
+            }
+
+            
         }
     }
 }

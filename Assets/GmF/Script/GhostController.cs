@@ -26,7 +26,7 @@ public class GhostController : MonoBehaviour
 
     public void StartPlay(AnimationCurve setRecordX, AnimationCurve setRecordY, float setRePlayTimeScale)
     {
-        if(_GhostPlayedSoundEffectPlayer == null)
+        if (_GhostPlayedSoundEffectPlayer == null)
         {
             _GhostPlayedSoundEffectPlayer = FindAnyObjectByType<Chika.GhostPlayedSoundEffectPlayer>();
             if(_GhostPlayedSoundEffectPlayer == null)
