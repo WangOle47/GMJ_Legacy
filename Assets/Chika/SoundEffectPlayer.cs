@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -30,6 +29,8 @@ namespace Chika {
             return instance;
         }
 
+        public virtual bool IsPlaying() => audioSource && audioSource.isPlaying;
+
         public virtual void Play() {
             var set = GetClipSet();
             if (set is null) return;
@@ -53,12 +54,18 @@ namespace Chika {
 
 #if UNITY_EDITOR
     [UnityEditor.CustomEditor(typeof(SoundEffectPlayer), true)]
-    public class SoundEffectPlayerObserverEditor : UnityEditor.Editor {
+    [UnityEditor.CanEditMultipleObjects]
+    public class SoundEffectPlayerEditor : UnityEditor.Editor {
         public override void OnInspectorGUI() {
             base.OnInspectorGUI();
             using var disableScope = new UnityEditor.EditorGUI.DisabledGroupScope(!UnityEditor.EditorApplication.isPlaying);
-            if (GUILayout.Button("Play")) ((SoundEffectPlayer)target).Play();
-            if (GUILayout.Button("Stop")) ((SoundEffectPlayer)target).Stop();
+            using var horizontalScope = new UnityEditor.EditorGUILayout.HorizontalScope();
+            if (GUILayout.Button("Play"))
+                foreach (var t in targets)
+                    ((SoundEffectPlayer)t).Play();
+            if (GUILayout.Button("Stop"))
+                foreach (var t in targets)
+                    ((SoundEffectPlayer)t).Stop();
         }
     }
 #endif
