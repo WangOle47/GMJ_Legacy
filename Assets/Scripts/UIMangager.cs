@@ -8,7 +8,6 @@ public class UIMangager : MonoBehaviour
     public GameObject panel;
     private bool panel_state;
 
-
     public void ShowPanel()
     { 
         panel_state = !panel_state;

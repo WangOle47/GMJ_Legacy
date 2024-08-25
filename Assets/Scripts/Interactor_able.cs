@@ -11,15 +11,16 @@ public class Interactor_able: MonoBehaviour
     
     public void Interactor(InputAction.CallbackContext ctx)
     {
-        int interactableLayer = LayerMask.NameToLayer("I_interactable");
-        int layerMask = 1 << interactableLayer;
-        if (Physics2D.OverlapCircle(transform.position, range, layerMask))
-        {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range, layerMask);
-            detectedObject = colliders[0].gameObject;
-            Debug.Log(colliders.Length);
-            colliders[0].gameObject.GetComponent<Flage>().Touch();
-        }
+        Object.FindAnyObjectByType<Flage>().Touch();
+        //int interactableLayer = LayerMask.NameToLayer("I_interactable");
+        //int layerMask = 1 << interactableLayer;
+        //if (Physics2D.OverlapCircle(transform.position, range, layerMask))
+        //{
+        //    Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range, layerMask);
+        //    detectedObject = colliders[0].gameObject;
+        //    Debug.Log(colliders.Length);
+        //    colliders[0].gameObject.GetComponent<Flage>().Touch();
+        //}
     }
     private void OnDrawGizmos()
     {

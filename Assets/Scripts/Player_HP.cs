@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Player_HP : MonoBehaviour
 {
     public GameObject Inputmanager;
+    public Rigidbody2D Player_Rig;
     public float HP = 100;
     private Vector2 revival_point;
     private Vector2 Dead_point;
@@ -39,6 +40,7 @@ public class Player_HP : MonoBehaviour
             transform.position = First_point;
             return;
         }
+        Player_Rig.simulated = false;
         Inputmanager.SetActive(false);
         HP = 0;
         Dead_point = transform.position;
@@ -62,6 +64,7 @@ public class Player_HP : MonoBehaviour
     IEnumerator revival()
     {
         yield return new WaitForSeconds(1f);
+        Player_Rig.simulated = true;
         HP = 100;
         transform.position = revival_point;
         Inputmanager.SetActive(true);
