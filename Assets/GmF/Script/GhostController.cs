@@ -11,6 +11,7 @@ public class GhostController : MonoBehaviour
     Vector2 lastPos = Vector2.zero;
     public bool isMoveing = false;
 
+    bool startPlay;
     Chika.GhostPlayedSoundEffectPlayer _GhostPlayedSoundEffectPlayer = null;
     Chika.GhostMovingSoundEffectPlayer _GhostMovingSoundEffectPlayer = null;
 
@@ -47,8 +48,8 @@ public class GhostController : MonoBehaviour
                 Debug.LogError("Can't find GhostMovingSoundEffectPlayer");
             }
         }
-
         RePlayTimeScale = setRePlayTimeScale;
+        startPlay = true;
         recordX.ClearKeys();
         foreach (var item in setRecordX.keys)
         {
@@ -63,6 +64,14 @@ public class GhostController : MonoBehaviour
 
     private void Update()
     {
+        if (startPlay)
+        {
+            startPlay = false;
+            var gpvep = FindAnyObjectByType<Chika.GhostPlayedVisualEffectPlayer>();
+            gpvep.particle.transform.position = new Vector3(recordX.Evaluate(0f), recordY.Evaluate(0f), transform.position.z);
+            gpvep.Play();
+        }
+
         if (DebugTool_RePlay)
         {
             DebugTool_RePlay = false;

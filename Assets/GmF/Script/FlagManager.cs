@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +55,7 @@ namespace GmF
                 FlagePrefab = Resources.Load<GameObject>("Prefab/Flage");
             }
 
-            if(_Flage != null)
+            if (_Flage != null)
             {
                 _Flage.ToDestroy();
                 _Flage = null;

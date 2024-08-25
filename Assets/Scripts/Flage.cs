@@ -6,7 +6,7 @@ public class Flage : MonoBehaviour
 {
     public void Touch()
     {
-        GmF.GhostSystemManager.GhostSystemManager_Instance.PlayRecord(0.5f);
+        GmF.GhostSystemManager.GhostSystemManager_Instance.PlayRecord(0f);
     }
 
     public void ToDestroy()
