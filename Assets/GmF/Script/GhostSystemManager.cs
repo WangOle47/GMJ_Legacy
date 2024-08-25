@@ -72,7 +72,7 @@ namespace GmF
             StartRecordTime = Time.time;
         }
 
-        public void EndRecord()
+        public void EndRecord(Vector2 pos)
         {
             Debug.Log("<color=white>EndRecord</color>");
             onRecord = false;
@@ -136,7 +136,7 @@ namespace GmF
             if (DebugTool_EndRecord)
             {
                 DebugTool_EndRecord = false;
-                EndRecord();
+                EndRecord(Vector2.zero);
             }
 
             if (DebugTool_RePlayRecord)

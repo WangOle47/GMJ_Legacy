@@ -9,7 +9,7 @@ using UnityEngine;
 public static class EventSystem
 {
     //¨¤¦âª¬ºA
-    public static event Action OncharacterDead;
+    public static event Action<Vector2> OncharacterDead;
 
     //¥Í¦¨ºX¼m
     public static event Action<Vector2> OnFlagGenerated;
@@ -24,9 +24,9 @@ public static class EventSystem
     public static event Action<string> StatusUpdated;
 
 
-    public static void CharacterDead()
+    public static void CharacterDead(Vector2 pos)
     {
-        OncharacterDead?.Invoke();
+        OncharacterDead?.Invoke(pos);
     }
     public static void FlagGenerated(Vector2 vector2)
     {

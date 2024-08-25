@@ -44,7 +44,7 @@ public class Player_HP : MonoBehaviour
         Inputmanager.SetActive(false);
         HP = 0;
         Dead_point = transform.position;
-        EventSystem.CharacterDead();
+        EventSystem.CharacterDead(Dead_point);
         if(type == "Collision")//·|¯d¿òª«
         {
 
