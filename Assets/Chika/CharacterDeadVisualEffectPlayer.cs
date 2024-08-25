@@ -1,10 +1,12 @@
 ﻿using DG.Tweening;
+using GMTK.PlatformerToolkit;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 namespace Chika {
     public sealed class CharacterDeadVisualEffectPlayer : VisualEffectPlayer {
+        public characterMovement characterMovement;
         public Volume volume;
         public float vignetteDuration = 0.2f;
         public AnimationCurve vignetteIntensity = new(new Keyframe(0f, 0f), new Keyframe(0.5f, 1f), new Keyframe(1f, 0f));
@@ -34,6 +36,16 @@ namespace Chika {
                     chromaticAberration.intensity.value = sharedChromaticAberration.intensity.value;
             });
             return sequence;
+        }
+
+        public override void PlayParticle() {
+            if (!characterMovement) {
+                characterMovement = FindAnyObjectByType<characterMovement>();
+                if (!characterMovement) return;
+            }
+
+            particle.transform.position = characterMovement.transform.position;
+            base.PlayParticle();
         }
 
         void OnCharacterDead() {
