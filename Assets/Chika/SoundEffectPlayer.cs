@@ -43,6 +43,7 @@ namespace Chika {
             audioSource.clip = set.clip;
             audioSource.volume = set.volume;
             audioSource.pitch = set.pitch;
+            audioSource.loop = set.loop;
             audioSource.gameObject.SetActive(true);
             audioSource.Play();
         }
