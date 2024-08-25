@@ -41,6 +41,8 @@ namespace GmF
 
         public float RePlayTimeScal = 1;
 
+        CharacterOnFlagNotReadySoundEffectPlayer _CharacterOnFlagNotReadySoundEffectPlayer = null;
+
         public bool DebugTool_StartRecord = false;
         public bool DebugTool_EndRecord = false;
 
@@ -67,6 +69,7 @@ namespace GmF
             newRecordX.ClearKeys();
             newRecordY.ClearKeys();
             onRecord = true;
+            StartRecordTime = Time.time;
         }
 
         public void EndRecord()
@@ -88,6 +91,23 @@ namespace GmF
         public void PlayRecord()
         {
             Debug.Log("<color=white>PlayRecord</color>");
+            if(oldRecordX.length == 0 || oldRecordY.length == 0)
+            {
+                Debug.Log("<color=yellow>Record is not ready!</color>");
+                if (_CharacterOnFlagNotReadySoundEffectPlayer == null)
+                {
+                    _CharacterOnFlagNotReadySoundEffectPlayer = FindAnyObjectByType<CharacterOnFlagNotReadySoundEffectPlayer>();
+                    if (_CharacterOnFlagNotReadySoundEffectPlayer == null)
+                    {
+                        Debug.LogError("Can't find CharacterOnFlagNotReadySoundEffectPlayer");
+                    }
+                }
+                else
+                {
+                    _CharacterOnFlagNotReadySoundEffectPlayer.Play();
+                }
+                return;
+            }
             if (_GhostController != null)
             {
                 _GhostController.ToDestory();

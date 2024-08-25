@@ -10,13 +10,13 @@ namespace Chika {
         public float lastGhostPositionX;
 
         void Update() {
-            if (!IsGhostMoving()) {
-                Stop();
-                return;
-            }
+            //if (!IsGhostMoving()) {
+            //    Stop();
+            //    return;
+            //}
 
-            lastGhostPositionX = ghostController.transform.position.x;
-            if (!audioSource || !audioSource.isPlaying) Play();
+            //lastGhostPositionX = ghostController.transform.position.x;
+            //if (!audioSource || !audioSource.isPlaying) Play();
         }
 
         bool IsGhostMoving() {
